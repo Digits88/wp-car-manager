@@ -1,4 +1,5 @@
 <?php
+
 namespace Never5\WPCarManager;
 
 abstract class Assets {
@@ -121,11 +122,11 @@ abstract class Assets {
 
 		wp_localize_script( 'wpcm_js_car_submission', 'wpcm', array(
 			'ajax_url_save'         => Ajax\Manager::get_ajax_url( 'save_vehicle' ),
-			'ajax_url_get_models'   => Ajax\Manager::get_ajax_url( 'get_models' ),
+			'ajax_url_get_models'   => Ajax\Manager::get_ajax_url( 'get_models_submit' ),
 			'ajax_url_post_images'  => Ajax\Manager::get_ajax_url( 'save_images' ),
 			'ajax_url_delete_image' => Ajax\Manager::get_ajax_url( 'delete_image' ),
 			'nonce_save'            => wp_create_nonce( 'wpcm_ajax_nonce_save_vehicle' ),
-			'nonce_models'          => wp_create_nonce( 'wpcm_ajax_nonce_get_models' ),
+			'nonce_models'          => wp_create_nonce( 'wpcm_ajax_nonce_get_models_submit' ),
 			'nonce_delete_image'    => wp_create_nonce( 'wpcm_ajax_nonce_delete_image' ),
 			'lbl_no_models_found'   => __( 'No models found', 'wp-car-manager' ),
 			'lbl_select_make_first' => __( 'Select make first', 'wp-car-manager' ),
@@ -162,10 +163,16 @@ abstract class Assets {
 		wp_localize_script( 'wpcm_js_dashboard', 'wpcm', array(
 			'ajax_url_get_vehicles'   => Ajax\Manager::get_ajax_url( 'get_dashboard' ),
 			'ajax_url_delete_vehicle' => Ajax\Manager::get_ajax_url( 'delete_vehicle' ),
+			'ajax_url_get_profile'    => Ajax\Manager::get_ajax_url( 'get_profile' ),
+			'ajax_url_save_profile'   => Ajax\Manager::get_ajax_url( 'save_profile' ),
 			'nonce_vehicles'          => wp_create_nonce( 'wpcm_ajax_nonce_get_dashboard' ),
 			'nonce_delete_vehicle'    => wp_create_nonce( 'wpcm_ajax_nonce_delete_vehicle' ),
+			'nonce_get_profile'       => wp_create_nonce( 'wpcm_ajax_nonce_get_profile' ),
+			'nonce_save_profile'      => wp_create_nonce( 'wpcm_ajax_nonce_save_profile' ),
 			'delete_confirm'          => __( 'Are you sure you want to delete %s?', 'wp-car-manager' ),
-			'error_delete_vehicle'    => __( 'Something went wrong when trying to delete your vehicle, please try again.', 'wp-car-manager' )
+			'error_delete_vehicle'    => __( 'Something went wrong when trying to delete your vehicle, please try again.', 'wp-car-manager' ),
+			'profile_btn_edit'        => __( 'Edit', 'wp-car-manager' ),
+			'profile_btn_save'        => __( 'Save Profile', 'wp-car-manager' )
 		) );
 
 		// do action wpcm_assets_frontend_vehicle_single

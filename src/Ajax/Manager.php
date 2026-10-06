@@ -46,6 +46,10 @@ class Manager {
 		$get_models = new GetModels();
 		$get_models->register();
 
+		// register GetModels
+		$get_models_submit = new GetModelsSubmit();
+		$get_models_submit->register();
+
 		// register SaveVehicle
 		$save_vehicle = new SaveVehicle();
 		$save_vehicle->register();
@@ -73,6 +77,15 @@ class Manager {
 		// register DismissNotice
 		$dismiss_notice = new DismissNotice();
 		$dismiss_notice->register();
+
+		// register GetProfile
+		$get_profile = new GetProfile();
+		$get_profile->register();
+
+		// register SaveProfile
+		$save_profile = new SaveProfile();
+		$save_profile->register();
+
 	}
 
 	/**
