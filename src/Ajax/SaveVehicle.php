@@ -121,10 +121,15 @@ class SaveVehicle extends Ajax {
 			 * Data Sanitation
 			 */
 
+			// trim these values always
+			$data['mileage'] = trim( $data['mileage'] );
+			$data['price']   = trim( $data['price'] );
+			$data['doors']   = trim( $data['doors'] );
+
 			// Sanitize integer values
-			$data['mileage'] = intval( preg_replace( '/,|\./mi', '', $data['mileage'] ) );
-			$data['price']   = intval( preg_replace( '/,|\./mi', '', $data['price'] ) );
-			$data['doors']   = intval( $data['doors'] );
+			$data['mileage'] = ( '' != $data['mileage'] ) ? intval( preg_replace( '/,|\./mi', '', $data['mileage'] ) ) : '';
+			$data['price']   = ( '' != $data['price'] ) ? intval( preg_replace( '/,|\./mi', '', $data['price'] ) ) : '';
+			$data['doors']   = ( '' != $data['doors'] ) ? intval( $data['doors'] ) : '';
 
 			// create Vehicle object
 			/** @var Vehicle\Car $vehicle */
@@ -155,6 +160,8 @@ class SaveVehicle extends Ajax {
 			$vehicle->set_transmission( $data['transmission'] );
 			$vehicle->set_engine( $data['engine'] );
 			$vehicle->set_doors( $data['doors'] );
+			$vehicle->set_power_kw( $data['power_kw'] );
+			$vehicle->set_power_hp( $data['power_hp'] );
 
 			// set features
 			if ( isset( $data['features'] ) && count( $data['features'] ) > 0 ) {
